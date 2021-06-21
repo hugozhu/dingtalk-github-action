@@ -1,13 +1,11 @@
 on: [push]
 
 jobs:
-  hello_world_job:
+  dingtalk-message:
     runs-on: ubuntu-latest
-    name: A job to say hello
+    name: send a dingtalk message 
     steps:
-      - name: Checkout
-        uses: actions/checkout@v2      
-      - name: Hello world action step
+      - name: dingtalk message action step
         id: hello
         uses: hugozhu/dingtalk-github-action@v1
         with:
