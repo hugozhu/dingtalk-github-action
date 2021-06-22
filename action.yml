@@ -1,6 +1,6 @@
 # action.yml
 name: 'DingTalk Message'
-description: 'Greet someone and record the time'
+description: 'Send a DingTalk message'
 inputs:
   who-to-greet:  # id of input
     description: 'Who to greet'
