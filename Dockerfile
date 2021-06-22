@@ -6,7 +6,7 @@ FROM golang:1.16
 COPY . .
 
 # Compile the action
-RUN go build -o /bin/action
+RUN go build -o /bin/push
 
 # Specify the container's entrypoint as the action
-ENTRYPOINT ["/bin/action"]
+ENTRYPOINT ["/bin/push"]
