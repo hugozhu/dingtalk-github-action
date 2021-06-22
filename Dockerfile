@@ -3,6 +3,7 @@
 FROM golang:1.16
 
 # Copy all the files from the host into the container
+WORKDIR /
 COPY . .
 
 # Enable Go modules
