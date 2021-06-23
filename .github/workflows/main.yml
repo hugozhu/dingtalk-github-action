@@ -17,6 +17,3 @@ jobs:
           token: ${{ secrets.TOKEN }}
           title: 'Hello from Github action'
           file: test.output
-      # Use the output from the `hello` step
-      - name: Get the output time
-        run: echo "The time was ${{ steps.push.outputs.time }}"
