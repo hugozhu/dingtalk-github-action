@@ -56,7 +56,7 @@ func main() {
 		message = string(data)
 	}
 
-	c := dingtalk.NewDingTalkClient(“”, “”)
+	c := dingtalk.NewDingTalkClient("", "")
 	resp, err := c.SendRobotMarkdownMessage(token, title, "# "+title+"\n\n"+message)
 	if err != nil {
 		githubactions.Fatalf("failed to send dingtalk message, %v", err)
