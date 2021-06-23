@@ -2,10 +2,10 @@ package main
 
 import (
 	"flag"
-	"os"
 	"regexp"
-	"fmt"
+
 	dingtalk "github.com/hugozhu/godingtalk"
+	githubactions "github.com/sethvargo/go-githubactions"
 )
 
 var img *bool
@@ -24,8 +24,19 @@ func stripeMarkdown(str string) string {
 }
 
 func main() {
-	c := dingtalk.NewDingTalkClient(os.Getenv("corpid"), os.Getenv("corpsecret"))
+	msg := githubactions.GetInput("msg")
+	corpid := githubactions.GetInput("corpid")
+	corpsecret := githubactions.GetInput("corpsecret")
+	token := githubactions.GetInput("token")
+
+	if msg == "" || corpid == "" || corpsecret == "" || token == "" {
+		githubactions.Fatalf("missing one of the inputs: 'msg', 'corpid', 'corpsecret', 'token'")
+		return
+	}
+
+	githubactions.AddMask(msg)
+
+	c := dingtalk.NewDingTalkClient(corpid, corpsecret)
 	c.RefreshAccessToken()
-	c.SendRobotMarkdownMessage(os.Getenv("token"), stripeMarkdown(os.Args[1]), os.Args[1])	
-	fmt.Println(os.Args[1])
+	c.SendRobotMarkdownMessage(token, stripeMarkdown(msg), msg)
 }
