@@ -7,9 +7,20 @@ This github action sends a dingtalk message.
 ```
 uses: hugozhu/dingtalk-github-action@v1
 with:
-  corpid: ${{ secrets.CORP_ID }}
-  corpsecret: ${{ secrets.CORP_SECRET }}
   token: ${{ secrets.TOKEN }}
   title: 'Hello from Github action'
+  type: markdown
   file: 'test.output'
+```
+
+
+```
+uses: hugozhu/dingtalk-github-action@v1
+with:
+  token: ${{ secrets.TOKEN }}
+  title: 'Hello from Github action'
+  type: text
+  content: |
+    ## Hello
+    > from github action message
 ```

@@ -3,7 +3,7 @@ name: 'DingTalk Message'
 description: 'Send a DingTalk robot message'
 inputs:
   token:  
-    description: '# openplatform token'
+    description: '# dingtalk robot token'
     required: true
     default: 'token'
   title:  
@@ -11,11 +11,15 @@ inputs:
     required: true
     default: 'message title'         
   type:  
-    description: '# type of the message'
+    description: '# message type'
     required: false
     default: 'markdown'
+  content:  
+    description: '# message content'
+    required: false
+    default: ''    
   file:  
-    description: '# message content file'
+    description: '# message content saved in file'
     required: false
     default: ''
 runs:

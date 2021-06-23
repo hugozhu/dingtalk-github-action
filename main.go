@@ -20,6 +20,7 @@ func main() {
 	title := githubactions.GetInput("title")
 	msgtype := githubactions.GetInput("type")
 	token := githubactions.GetInput("token")
+	content := githubactions.GetInput("content")
 	file := githubactions.GetInput("file")
 
 	if title == "" {
@@ -34,13 +35,18 @@ func main() {
 
 	githubactions.AddMask(title)
 
-	message := ""
+	message := content
+
 	if file != "" {
 		data, err := ioutil.ReadFile(file)
 		if err != nil {
 			githubactions.Fatalf("faild to read file %v", err)
 		}
-		message = string(data)
+		if message != "" {
+			message = message + "\n\n" + string(data)
+		} else {
+			message = string(data)
+		}
 	}
 
 	c := dingtalk.NewDingTalkClient("", "")

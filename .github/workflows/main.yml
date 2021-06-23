@@ -15,4 +15,7 @@ jobs:
           token: ${{ secrets.TOKEN }}
           type: markdown
           title: 'Hello from Github action'
+          content: |
+            ## Text Content
+            > from github action message          
           file: test.output
