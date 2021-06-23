@@ -9,9 +9,9 @@ jobs:
         id: push
         uses: hugozhu/dingtalk-github-action@v1
         with:
-          corpid: 'hello1'
-          corpsecret: 'hello2'
-          token: 'hello3'
+          corpid: ${{ secrets.CORP_ID }}
+          corpsecret: ${{ secrets.CORP_SECRET }}
+          token: ${{ secrets.CORP_TOKEN }}
           msg: 'Hello'
       # Use the output from the `hello` step
       - name: Get the output time
