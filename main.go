@@ -25,8 +25,8 @@ func main() {
 
 	file := githubactions.GetInput("file")
 
-	if msg == "" {
-		githubactions.Fatalf("missing 'msg'")
+	if title == "" {
+		githubactions.Fatalf("missing 'title'")
 		return
 	}
 
@@ -50,7 +50,7 @@ func main() {
 	message := ""
 	if file != "" {
 		data, err := ioutil.ReadFile(file)
-		if err != ni {
+		if err != nil {
 			githubactions.Fatalf("faild to read file %v", err)
 		}
 		message = string(data)

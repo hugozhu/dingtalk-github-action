@@ -14,3 +14,6 @@ jobs:
           token: ${{ secrets.TOKEN }}
           title: 'Hello from Github action'
           file: 'README.md'
+      # Use the output from the `hello` step
+      - name: Get the output time
+        run: echo "The time was ${{ steps.push.outputs.time }}"
