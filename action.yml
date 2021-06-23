@@ -1,11 +1,23 @@
 # action.yml
 name: 'DingTalk Message'
-description: 'Send a DingTalk message'
+description: 'Send a DingTalk robot message'
 inputs:
-  who-to-greet:  # id of input
-    description: 'Who to greet'
+  corpid:  
+    description: '# openplatform corpid'
     required: true
-    default: 'World'
+    default: 'corpid'
+  corpsecret:  
+    description: '# openplatform corpsecret'
+    required: true
+    default: 'corpsecret'
+  token:  
+    description: '# openplatform token'
+    required: true
+    default: 'token'        
+  msg:  
+    description: '# openplatform token'
+    required: true
+    default: 'Hello, World'         
 outputs:
   time: # id of output
     description: 'The time we greeted you'

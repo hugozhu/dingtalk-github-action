@@ -5,7 +5,7 @@ jobs:
     runs-on: ubuntu-latest
     name: send a dingtalk message 
     steps:
-      - name: send a dingtalk message
+      - name: Send a dingtalk robot message
         id: push
         uses: hugozhu/dingtalk-github-action@v1
         with:

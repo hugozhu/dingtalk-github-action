@@ -2,6 +2,7 @@ package main
 
 import (
 	"flag"
+	"fmt"
 	"regexp"
 
 	dingtalk "github.com/hugozhu/godingtalk"
@@ -38,5 +39,10 @@ func main() {
 
 	c := dingtalk.NewDingTalkClient(corpid, corpsecret)
 	c.RefreshAccessToken()
-	c.SendRobotMarkdownMessage(token, stripeMarkdown(msg), msg)
+	resp, err := c.SendRobotMarkdownMessage(token, stripeMarkdown(msg), msg)
+	if err != nil {
+		githubactions.Fatalf("failed to send dingtalk message, %v", err)
+	} else {
+		githubactions.AddMask(fmt.Sprintf("%v", resp.OAPIResponse))
+	}
 }
