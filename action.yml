@@ -2,22 +2,18 @@
 name: 'DingTalk Message'
 description: 'Send a DingTalk robot message'
 inputs:
-  corpid:  
-    description: '# openplatform corpid'
-    required: true
-    default: 'corpid'
-  corpsecret:  
-    description: '# openplatform corpsecret'
-    required: true
-    default: 'corpsecret'
   token:  
     description: '# openplatform token'
     required: true
-    default: 'token'        
+    default: 'token'
   title:  
     description: '# message title'
     required: true
-    default: 'message title'
+    default: 'message title'         
+  type:  
+    description: '# type of the message'
+    required: false
+    default: 'markdown'
   file:  
     description: '# message content file'
     required: false
