@@ -13,4 +13,4 @@ jobs:
           corpsecret: ${{ secrets.CORP_SECRET }}
           token: ${{ secrets.TOKEN }}
           title: 'Hello from Github action'
-          file: README.md
+          file: 'README.md'
