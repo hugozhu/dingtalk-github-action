@@ -30,8 +30,23 @@ func main() {
 	corpsecret := githubactions.GetInput("corpsecret")
 	token := githubactions.GetInput("token")
 
-	if msg == "" || corpid == "" || corpsecret == "" || token == "" {
-		githubactions.Fatalf("missing one of the inputs: 'msg', 'corpid', 'corpsecret', 'token'")
+	if msg == "" {
+		githubactions.Fatalf("missing 'msg'")
+		return
+	}
+
+	if corpid == "" {
+		githubactions.Fatalf("missing 'corpid'")
+		return
+	}
+
+	if corpsecret == "" {
+		githubactions.Fatalf("missing 'corpsecret'")
+		return
+	}
+
+	if token == "" {
+		githubactions.Fatalf("missing 'token'")
 		return
 	}
 
