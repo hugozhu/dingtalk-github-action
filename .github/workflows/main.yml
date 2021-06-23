@@ -5,6 +5,9 @@ jobs:
     runs-on: ubuntu-latest
     name: send a dingtalk message 
     steps:
+      - name: Output file
+        id: output
+        run: go help > test.output
       - name: Send a dingtalk robot message
         id: push
         uses: hugozhu/dingtalk-github-action@v1
@@ -13,7 +16,7 @@ jobs:
           corpsecret: ${{ secrets.CORP_SECRET }}
           token: ${{ secrets.TOKEN }}
           title: 'Hello from Github action'
-          file: 'README.md'
+          file: test.output
       # Use the output from the `hello` step
       - name: Get the output time
         run: echo "The time was ${{ steps.push.outputs.time }}"
