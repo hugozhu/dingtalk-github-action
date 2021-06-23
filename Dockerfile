@@ -10,7 +10,7 @@ COPY . .
 ENV GO111MODULE=on
 
 # Compile the action
-RUN go build -o /bin/push
+RUN unset GOPATH && go build -o /bin/push
 
 # Specify the container's entrypoint as the action
 ENTRYPOINT ["/bin/push"]
