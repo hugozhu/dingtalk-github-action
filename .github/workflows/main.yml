@@ -5,11 +5,14 @@ jobs:
     runs-on: ubuntu-latest
     name: send a dingtalk message 
     steps:
-      - name: dingtalk message action step
-        id: hello
+      - name: send a dingtalk message
+        id: push
         uses: hugozhu/dingtalk-github-action@v1
         with:
-          who-to-greet: 'Mona the Octocat'
+          corpid: 'hello1'
+          corpsecret: 'hello2'
+          token: 'hello3'
+          msg: 'Hello'
       # Use the output from the `hello` step
       - name: Get the output time
         run: echo "The time was ${{ steps.hello.outputs.time }}"
