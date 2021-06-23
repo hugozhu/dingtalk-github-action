@@ -14,9 +14,13 @@ inputs:
     description: '# openplatform token'
     required: true
     default: 'token'        
-  msg:  
-    description: '# message to sent'
+  title:
+    description: '# message title'
     required: true
+    default: 'message title'
+  file:
+    description: '# message content file'
+    required: false
     default: ''
 runs:
   using: 'docker'

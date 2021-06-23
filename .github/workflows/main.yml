@@ -12,4 +12,5 @@ jobs:
           corpid: ${{ secrets.CORP_ID }}
           corpsecret: ${{ secrets.CORP_SECRET }}
           token: ${{ secrets.TOKEN }}
-          msg: 'Hello from Github action'
+          title: 'Hello from Github action'
+          file: README.md

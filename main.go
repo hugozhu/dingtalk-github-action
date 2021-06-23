@@ -3,7 +3,7 @@ package main
 import (
 	"flag"
 	"fmt"
-	"regexp"
+	"io/ioutil"
 
 	dingtalk "github.com/hugozhu/godingtalk"
 	githubactions "github.com/sethvargo/go-githubactions"
@@ -17,18 +17,13 @@ func init() {
 	flag.Parse()
 }
 
-func stripeMarkdown(str string) string {
-	str = regexp.MustCompile("[*|#]+").ReplaceAllString(str, "")
-	str = regexp.MustCompile("\\s+").ReplaceAllString(str, " ")
-	str = regexp.MustCompile("^ ").ReplaceAllString(str, "")
-	return str
-}
-
 func main() {
-	msg := githubactions.GetInput("msg")
+	title := githubactions.GetInput("title")
 	corpid := githubactions.GetInput("corpid")
 	corpsecret := githubactions.GetInput("corpsecret")
 	token := githubactions.GetInput("token")
+
+	file := githubactions.GetInput("file")
 
 	if msg == "" {
 		githubactions.Fatalf("missing 'msg'")
@@ -50,11 +45,20 @@ func main() {
 		return
 	}
 
-	githubactions.AddMask(msg)
+	githubactions.AddMask(title)
+
+	message := ""
+	if file != "" {
+		data, err := ioutil.ReadFile(file)
+		if err != ni {
+			githubactions.Fatalf("faild to read file %v", err)
+		}
+		message = string(data)
+	}
 
 	c := dingtalk.NewDingTalkClient(corpid, corpsecret)
 	c.RefreshAccessToken()
-	resp, err := c.SendRobotMarkdownMessage(token, stripeMarkdown(msg), msg)
+	resp, err := c.SendRobotMarkdownMessage(token, title, message)
 	if err != nil {
 		githubactions.Fatalf("failed to send dingtalk message, %v", err)
 	} else {
