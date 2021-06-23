@@ -12,7 +12,4 @@ jobs:
           corpid: ${{ secrets.CORP_ID }}
           corpsecret: ${{ secrets.CORP_SECRET }}
           token: ${{ secrets.TOKEN }}
-          msg: 'Hello default message'
-      # Use the output from the `hello` step
-      - name: Get the output time
-        run: echo "The time was ${{ steps.hello.outputs.time }}"
+          msg: 'Hello from Github action'

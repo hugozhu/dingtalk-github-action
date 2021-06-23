@@ -15,14 +15,9 @@ inputs:
     required: true
     default: 'token'        
   msg:  
-    description: '# openplatform token'
+    description: '# message to sent'
     required: true
-    default: 'Hello, World'         
-outputs:
-  time: # id of output
-    description: 'The time we greeted you'
+    default: ''
 runs:
   using: 'docker'
   image: 'Dockerfile'
-  args:
-    - ${{ inputs.who-to-greet }}
